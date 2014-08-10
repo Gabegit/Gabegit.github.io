@@ -1,0 +1,14 @@
+# Site settings
+title: gmEcon
+email: gabriellgm@gmail.com
+description: "a blog for economics study and teaching."
+baseurl: ""
+url: "http://yourdomain.com"
+twitter_username: jekyllrb
+github_username:  jekyll
+
+# Build settings
+markdown: kramdown
+permalink: pretty
+
+timezone: Asia/Shanghai
