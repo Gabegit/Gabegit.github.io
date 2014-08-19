@@ -146,4 +146,109 @@ pandoc ʹ��utf-8��ΪĬ�ϵ�����������룬���
   
   `sumatrapdf he.pdf`
 
+# Pandoc Use's Guide #
+
+## 安装pandoc程序和相应模式 ##
+
+* 下载pandoc程序，安装在`c:\Users\gabe\AppData\Roaming\pandoc`
+* 安装`pandoc-mode.el` 和 `markdown-mode.el`,其中前一个设置pandoc的格式， 后一个方便markdown 输入。
+
+## 配置 Emacs ##
+
+重点是配置 `pandoc` 程序路径。方法为：
+	options - customize Eamcs - specific option > pandoc TAB - pandoc
+	binary 输入pandoc 的路径
+
+
+## Using pandoc ##
+
+* Two ways to using pandoc compiling
+  * 在pandoc 菜单进行相应的设置，然后点击编译，即可。
+  * 输入shell 命令，方法：alt-！ 进入shell命令行，输入相应的编译命令。
+
+* output to a file, use the -o option
+
+the input-files are concatenated (with a ank line between each) and
+used as input.
+
+The `-s` option says to create a “standalone” file, with a header and footer, not just a fragment.
+
+	pandoc -o output.html input.txt
+
+* specify th input format and output format
+
+	pandoc -f markdown -t latex hello.md
+
+* Convert hello.txt from markdown to LaTeX
+
+To create a LaTeX document, you just need to change the command slightly:
+
+	pandoc test1.md -f markdown -t latex -s -o test1.tex
+	pandoc test1.md -s -o test1.tex
+
+* HTML with smart quotes, table of contents, CSS, and custom footer:
+
+	pandoc -s -S --toc -c pandoc.css -A footer.html README -o
+    example3.html
+
+* From LaTeX to markdown:
+
+	pandoc -s example4.tex -o example5.text
+
+* Converting a web page to markdown:
+
+	pandoc -s -r html http://www.gnu.org/software/make/ -o example12.text
+
+* PDF with numbered sections and a custom LaTeX header:
+
+	pandoc -N --template=mytemplate.tex --variable mainfont=Georgia
+	--variable sansfont=Arial --variable monofont="Bitstream Vera Sans
+	Mono" --variable fontsize=12pt --variable version=1.10 README
+	--latex-engine=xelatex --toc -o example14.pdf
+
+* HTML slide shows:
+
+	pandoc -s --mathml -i -t dzslides SLIDES -o example16a.html
+	pandoc -s --webtex -i -t slidy SLIDES -o example16b.html
+	pandoc -s --self-contained --webtex -i -t s5 SLIDES -o example16c.html
+	pandoc -s --mathjax -i -t slideous SLIDES -o example16d.html
+
+* TeX math in HTML:
+
+	pandoc math.text -s -o mathDefault.html
+	pandoc math.text -s --mathml -o mathMathML.html
+	pandoc math.text -s --webtex -o mathWebTeX.html
+	pandoc math.text -s --mathjax -o mathMathJax.html
+	pandoc math.text -s --latexmathml -o mathLaTeXMathML.html
+
+* Pandoc uses the UTF-8 character encoding for both input and output 
+
+If your local character encoding is not UTF-8, you should pipe input and output through:
+
+
+## creating a pdf ##
+
+Pandoc will create a latex file and use pdflatex (or another engine,
+see --latex-engine)
+
+	pandoc test.txt -o test.pdf
+
+## General options ##
+	
+Specify input format
+
+	-f FORMAT, -r FORMAT, --from=FORMAT, --read=FORMAT
+
+Specify output format
+
+	-t FORMAT, -w FORMAT, --to=FORMAT, --write=FORMAT
+
+Write output to FILE instead of stdout
+
+	-o FILE, --output=FILE
+
+Specify the user data directory to search for pandoc data files.
+
+	--data-dir=DIRECTORY
+
 
