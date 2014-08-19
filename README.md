@@ -6,3 +6,4 @@
 
 * a beta version
 
+the static pape is [here](http://Gabegit.github.io )
