@@ -3,8 +3,6 @@ layout: post
 title: markdown tips
 ---
 
-% Markdown syntax cheatsheet
-% Li Guomin
 
 # syntax cheatsheet
 
